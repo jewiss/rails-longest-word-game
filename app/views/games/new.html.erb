@@ -1,0 +1,16 @@
+<h1> Welcome to the longest word-game! </h1>
+<p>Here is your grid : </p>
+<ul>
+  <% @grid.each do |letter| %>
+  <li class="list-inline-item"> <%= letter %> </li>
+  <% end %>
+</ul>
+
+<p>What is the longest word you can find ?</p>
+<form action="/score" method="POST" >
+  <%= hidden_field_tag :grid, @grid %>
+  <%= hidden_field_tag :score, @grand_score %>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token%>
+  <input type="text" name="new" value="<%= params[:new] %>">
+  <input type="submit" value="Play!">
+</form>
